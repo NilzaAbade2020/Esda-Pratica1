@@ -38,13 +38,14 @@ int main()
 {
     adicionarEquipe();
     imprimirEquipe();
+    //imprimirJogador();
     //adicionarJogador();
     return 0;
 }
 
 
 
-/*DESENVOLVIMENTO DAS FUNÇÕES DA EQUIPE*/
+/*DESENVOLVIMENTO DAS FUNCOES DA EQUIPE*/
 //FUNCAO QUE ABRE ARQUIVO DE EQUIPES
 FILE *abrirArquivoEquipe(char modo[3]){
     FILE *file;
@@ -109,14 +110,78 @@ void imprimirEquipe(){
     }
     fclose(file);
 }
-
+//DESENVOLVIMENTO DAS FUNCOES JOGADOR
 //FUNCAO QUE ABRE ARQUIVO DE Jogador
 FILE *abrirArquivoJogador(char modo[3]){
-    FILE *abade;
-    abade = fopen("Jogadores.dat", modo);
-    if (abade==NULL){
+    FILE *arquivo;
+    arquivo = fopen("Jogadores.dat", modo);
+    if (arquivo==NULL){
         modo = "w";
-        abade = fopen("Jogadores.dat", modo);
+        arquivo = fopen("Jogadores.dat", modo);
     }
-    return abade;
+    return arquivo;
 } 
+//Funcao para cadastrar Jogador
+void adicionarJogador(){
+	FILE *arquivo = abrirArquivoJogador("ab"){
+        fwrite(&jog[i],sizeof(jog[i]),1,arquivo);
+        fclose(arquivo);
+		}
+	do
+	{
+		
+		printf("Digite o nome:\n");
+		scanf("%s",jog[i].nome);
+		system("cls");
+		
+		printf("Digite a idade:\n");
+		scanf("%d",&jog[i].apelido);
+		system("cls");
+		
+		printf("Digite a idade:\n");
+		scanf("%d",&jog[i].nr_golos);
+		system("cls");
+		
+		printf("Digite a idade:\n");
+		scanf("%d",&jog[i].apelido);
+		system("cls");
+		
+		printf("Digite a idade:\n");
+		scanf("%d",&jog[i].apelido);
+		system("cls");
+		
+	
+		
+	}while(op!=2);
+	fclose(fp);
+    }
+//FUNÇCÃO QUE IMPRIME Jogadores
+void imprimirJogador(){
+    Jogador jog;
+    FILE *arquivo = abrirArquivoJogador("r+b");
+    while(fread(&eq, sizeof(jog),1,arquivo)==1){
+        printf("\n\t\t\t\t\tId Id Jogador: %d",jog.id_jogador);
+        printf("\n\t\t\t\t\tNome do jogador: %s", jog.apelido);
+        printf("\n\t\t\t\t\tApelido do jogador: %s", jog.nr_golos);
+        printf("\n\t\t\t\t\Jogador activo ou nao: %s", jog.ativo);
+        printf("\n\t\t\t\t\tData de nascimento do jogador: %s", jog.data_nascimento);
+        printf("\n\t\t\t\t\tData de inicio de contrato do jogador: %s", jog.data_inicio);
+        printf("\n\t\t\t\t\tdata do fim de contarto do jogador: %s", jog.data_fim);
+        printf("\n\n");
+    }
+    fclose(arquivo);
+    /*Funcao para imprimir jogador
+void imprimirJogador(){
+	
+	FILE *arquivo;
+	arquivo=fopen("jog.txt","r");
+	int i=0;
+	Jogador jog[4];
+	while(!feof(arquivo)){
+		
+		fscanf(arquivo,"%s %d",jog[i].nome,&jog[i].id_jogador);
+		printf("\n nome:%s \nidade:%d\n",jog[i].nome,jog[i].id_jogador);
+		
+	}
+	fclose(arquivo);
+}*/
